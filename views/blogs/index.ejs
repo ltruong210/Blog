@@ -5,7 +5,7 @@
     <div class="ui top attached segment">
         <div class="ui divided items">
             <% if(!user.blogs) { %>
-                <div class="item ui"><p>Your Blog is Empty. Create a new post <a href="/<%= currentUser._id %>/blogs/new"</p></div>
+                <div class="item ui"><p>Your Blog is Empty</p></div>
             <% } %>
             <% user.blogs.forEach(function(blog) {%>
                 <div class="item">
