@@ -1,6 +1,8 @@
 var express =require("express");
 var router = express("router");
 var middleware = require("../middleware/index");
+var Blog = require("../models/blog");
+var User = require("../models/user");
 
 // INDEX ROUTE
 router.get("/", function(req, res) {
@@ -66,7 +68,7 @@ router.post("/:userId/blogs", middleware.isLoggedIn, function(req, res) {
 })
 
 // SHOW ROUTE
-router.get("/:userId/blogs/:blogId", middleware.isLoggedIn, function(req, res) {
+router.get("/:userId/blogs/:blogId", function(req, res) {
     Blog.findById(req.params.blogId, function(err, foundBlog){
         if(err) {
             req.flash("error", err.message);

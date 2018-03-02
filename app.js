@@ -1,10 +1,9 @@
-var bodyParser          = require("body-parser"),
-    // handle malicious input
+var express             = require("express"),
+    app                 = express(),
+    bodyParser          = require("body-parser"),
     expressSanitizer    = require("express-sanitizer"),
     methodOverride      = require("method-override"),
     mongoose            = require("mongoose"),
-    express             = require("express"),
-    app                 = express();
     passport            = require("passport"),
     LocalStrategy       = require("passport-local"),
     flash               = require("connect-flash"),
@@ -16,7 +15,7 @@ var bodyParser          = require("body-parser"),
 // DATABASE CONFIG
 mongoose.Promise = global.Promise;
 
-const databaseUri = 'mongodb://luantruong:8122389Tl@ds151558.mlab.com:51558/blog';
+const databaseUri = process.env.DATABASEURL || 'mongodb://localhost:/blog_app';
 
 mongoose.connect(databaseUri)
       .then(() => console.log(`Database connected`))
