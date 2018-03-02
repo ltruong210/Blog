@@ -15,7 +15,7 @@ router.get("/blogs", function(req, res) {
             req.flash("error", err.message);
             res.redirect("back");
         } else {
-            res.render("index", {blogs: foundBlogs});
+            res.render("blogs/index", {blogs: foundBlogs});
         }
     })
 });
@@ -31,7 +31,7 @@ router.get("/:userId/blogs", function(req, res){
             req.flash("error", err.message);
             res.redirect("back");
         } else {
-            res.render("blogs/index", {user: foundUser});
+            res.render("blogs/index", {blogs: foundUser.blogs});
         }
     })
 });
